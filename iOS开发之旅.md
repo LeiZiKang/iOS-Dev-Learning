@@ -615,3 +615,35 @@ DocumentPreview(url: URL(fileURLWithPath: "/path/to/your/document.pdf"))
 # App显示名字
 
 bundle Display Name
+
+---
+# UIkit与swiftUI的区别
+
+1. 最大的区别就是UIKit使用class，swiftUI使用struct
+
+在 UIKit 中，所有的视图都继承自一个叫 `UIView` 的类，它有非常多的属性和方法 —— 背景颜色，布局约束，用于渲染的层，等等。还有更多诸如此类的属性，而每一个 `UIView` 和 `UIView` 的子类都有，因为这正是继承的工作方式。
+
+涉及一个性能原理：结构体比类更简单，更轻量。之所以第一个说这个原因，是因为大多数都认为这是 SwiftUI 采用结构体的主要原因。其实，纵观全局，这只是原因之一。
+
+2. 用 struct 表示 view 还有其他重要原因：它强迫我们以一种更干净的方式隔离状态。类可以自由地修改它的值 —— 这可能导致更凌乱的代码，这样的话 SwiftUI 就无法通过某个值的变化来自动更新 UI 了。
+
+用 struct 表示 view 还有其他重要原因：它强迫我们以一种更干净的方式隔离状态。类可以自由地修改它的值 —— 这可能导致更凌乱的代码，这样的话 SwiftUI 就无法通过某个值的变化来自动更新 UI 了。
+
+---
+# CocoaPods和SPM的区别
+
+1. CocoaPods是中心化的，SPM是去中心化的
+2. CocoaPods的项目入侵比较严重
+
+- [CocoaPods](https://blog.csdn.net/u014600626/article/details/102922568)、[Carthage](https://www.jianshu.com/p/42118918177b)、[SPM](https://zhuanlan.zhihu.com/p/103197303)对比
+
+![[f7dd8aca06b241698df35f4d43b2b997.png]]
+
+主要区别：
+1. 原理
+2. 项目入侵性，源码是否可见
+
+
+---
+# iOS使用FastLane自动打包
+https://blog.csdn.net/long4512524/article/details/129733908
