@@ -711,7 +711,7 @@ ScrollView(.vertical, showsIndicators: false) {
 在这个修复后的版本中，我们将 `ScrollView` 移动到了 `ScrollViewReader` 的外部，并为连接模块设置了一个 ID。然后，在 `onAppear` 方法中，我们使用 `proxy.scrollTo(_:anchor:)` 方法来滚动到连接模块。
 
 ---
-## UIImage保存到文件app（HEIC形式）
+# UIImage保存到文件app（HEIC形式）
 在 iOS 11 及更高版本中，你可以使用 `AVAssetWriter` 和 `AVAssetWriterInputPixelBufferAdaptor` 将 `UIImage` 数组保存为 HEIC 格式的文件。以下是一个示例：
 
 ```swift
@@ -751,3 +751,14 @@ func saveImages(_ images: [UIImage], toFile file: String) {
 最后，我们标记 `AVAssetWriterInput` 为已完成，并结束写入。
 
 请注意，这个函数将图像保存为一个 HEIC 文件，而不是多个文件。每个图像都被保存为文件中的一个帧。
+
+---
+# mvvm和mvc区别
+
+MVVM和MVC的区别主要在于==**数据绑定和通信方式的不同**==，MVVM是双向数据绑定，而MVC是单向数据绑定。1234567
+
+MVVM模式中，视图(View)和模型(Model)之间通过视图模型(ViewModel)进行交互，视图模型负责将数据绑定到视图上，并处理视图相关的逻辑，同时，视图模型也能监听视图的变化，并更新数据，这种双向数据绑定的特性使得数据和视图之间的同步更加简单和高效。
+
+MVC模式中，视图和模型之间通过控制器(Controller)进行交互，控制器负责协调模型和视图之间的逻辑和流程，在MVC中，视图的变化会直接影响模型，而在MVVM中，视图的变化不会直接影响到模型，这种设计思想更加符合单向数据流的思想。
+
+总的来说，MVVM模式在数据绑定、视图与模型之间的解耦、开发效率和用户体验方面优于MVC模式。
