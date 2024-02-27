@@ -647,3 +647,107 @@ bundle Display Name
 ---
 # iOS使用FastLane自动打包
 https://blog.csdn.net/long4512524/article/details/129733908
+
+
+---
+# 渐变色
+
+在SwiftUI中，`LinearGradient`，`RadialGradient`和`AngularGradient`都是用来创建渐变色的。
+
+1. `LinearGradient`：线性渐变，颜色沿直线方向逐渐改变。它有两个关键参数：`gradient`和`startPoint`，`endPoint`。`gradient`定义了渐变的颜色和位置，`startPoint`和`endPoint`定义了渐变的方向。
+
+```swift
+LinearGradient(gradient: Gradient(colors: [.red, .blue]), startPoint: .top, endPoint: .bottom)
+```
+
+2. `RadialGradient`：径向渐变，颜色从一个中心点向外逐渐改变。它有三个关键参数：`gradient`，`center`和`startRadius`，`endRadius`。`gradient`定义了渐变的颜色和位置，`center`定义了渐变的中心点，`startRadius`和`endRadius`定义了渐变的半径范围。
+
+```swift
+RadialGradient(gradient: Gradient(colors: [.red, .blue]), center: .center, startRadius: 0, endRadius: 200)
+```
+
+3. `AngularGradient`：角度渐变，颜色沿圆周方向逐渐改变。它有两个关键参数：`gradient`和`center`。`gradient`定义了渐变的颜色和位置，`center`定义了渐变的中心点。
+
+```swift
+AngularGradient(gradient: Gradient(colors: [.red, .blue]), center: .center)
+```
+
+	以上都是创建渐变色的基本方法，你可以根据需要调整参数来创建不同的渐变效果。
+
+
+---
+
+# ScrollerViewReader
+
+你的代码中的问题在于，你试图在 `ScrollViewReader` 的 `content` 闭包中使用 `ScrollView`。然而，`ScrollViewReader` 的目的是允许你控制其内部的 `ScrollView` 的滚动位置，所以你应该将 `ScrollView` 放在 `ScrollViewReader` 的外部。
+
+此外，你需要为你想要滚动到的视图设置一个 ID，然后你可以使用这个 ID 来滚动到这个视图。以下是修复后的代码：
+
+```swift
+ScrollView(.vertical, showsIndicators: false) {
+    ScrollViewReader { proxy in
+        VStack {
+            // 系统信息模块
+            // ...
+
+            // 已接收文件模块
+            // ...
+
+            // 连接模块
+            VStack {
+                // ...
+            }
+            .id(bottomID) // 设置 ID
+            .padding(.bottom, 20)
+            .padding(.top, 20)
+        }
+        .onAppear(perform: {
+            proxy.scrollTo(bottomID, anchor: .bottom) // 滚动到指定的 ID
+        })
+    }
+}
+```
+
+在这个修复后的版本中，我们将 `ScrollView` 移动到了 `ScrollViewReader` 的外部，并为连接模块设置了一个 ID。然后，在 `onAppear` 方法中，我们使用 `proxy.scrollTo(_:anchor:)` 方法来滚动到连接模块。
+
+---
+## UIImage保存到文件app（HEIC形式）
+在 iOS 11 及更高版本中，你可以使用 `AVAssetWriter` 和 `AVAssetWriterInputPixelBufferAdaptor` 将 `UIImage` 数组保存为 HEIC 格式的文件。以下是一个示例：
+
+```swift
+import AVFoundation
+import UIKit
+
+func saveImages(_ images: [UIImage], toFile file: String) {
+    let fileURL = URL(fileURLWithPath: file)
+    let assetWriter = try! AVAssetWriter(outputURL: fileURL, fileType: AVFileType.heic)
+    let outputSettings: [String: Any] = [
+        AVVideoCodecKey: AVVideoCodecType.heic,
+        AVVideoWidthKey: NSNumber(value: Float(images[0].size.width)),
+        AVVideoHeightKey: NSNumber(value: Float(images[0].size.height))
+    ]
+    let assetWriterInput = AVAssetWriterInput(mediaType: .video, outputSettings: outputSettings)
+    let adaptor = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: assetWriterInput, sourcePixelBufferAttributes: nil)
+    assetWriter.add(assetWriterInput)
+
+    assetWriter.startWriting()
+    assetWriter.startSession(atSourceTime: CMTime.zero)
+
+    let context = CIContext()
+    for (i, image) in images.enumerated() {
+        let buffer = context.createPixelBuffer(for: image.cgImage!)!
+        adaptor.append(buffer, withPresentationTime: CMTime(value: Int64(i), timescale: 1))
+    }
+
+    assetWriterInput.markAsFinished()
+    assetWriter.finishWriting {}
+}
+```
+
+在这个示例中，我们首先创建了一个 `AVAssetWriter`，并设置了输出文件的类型为 HEIC。然后，我们创建了一个 `AVAssetWriterInput`，并设置了输出的宽度和高度。接着，我们创建了一个 `AVAssetWriterInputPixelBufferAdaptor`，并将 `AVAssetWriterInput` 添加到 `AVAssetWriter` 中。
+
+然后，我们开始写入会话，并遍历图像数组。对于每个图像，我们创建一个像素缓冲区，并将其添加到 `AVAssetWriterInputPixelBufferAdaptor` 中。
+
+最后，我们标记 `AVAssetWriterInput` 为已完成，并结束写入。
+
+请注意，这个函数将图像保存为一个 HEIC 文件，而不是多个文件。每个图像都被保存为文件中的一个帧。
