@@ -773,3 +773,18 @@ MVC模式中，视图和模型之间通过控制器(Controller)进行交互，�
 3:返回指针地址
 
 
+---
+## CGRectMake
+`CGRectMake`是一个在Objective-C中用于创建CGRect结构的函数。CGRect是一个结构，用于描述一个矩形的位置和尺寸。
+
+`CGRectMake`函数接受四个参数：x, y, width, height。其中，x和y定义了矩形左上角的位置，width和height定义了矩形的宽度和高度。
+
+这是一个例子：
+
+```objective-c
+CGRect rect = CGRectMake(0, 0, 100, 100);
+```
+
+在这个例子中，我们创建了一个新的CGRect，其左上角位于(0,0)，宽度和高度都是100。
+
+
