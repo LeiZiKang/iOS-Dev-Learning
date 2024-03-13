@@ -1,0 +1,167 @@
+{
+  "main": {
+    "id": "7cbd959a9ae2552a",
+    "type": "split",
+    "children": [
+      {
+        "id": "c11c939e4dff6c20",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "04addc6aebea48eb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "iOS开发之旅.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "62951776efd1930d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "iOS开发之旅.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1245f149b8d910ec",
+    "type": "split",
+    "children": [
+      {
+        "id": "c134491578c0a145",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "829e294e2c83a48d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "f81530c43ef7beba",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "fe7e6e7ab7295a4a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "0da33ae44e090d0c",
+    "type": "split",
+    "children": [
+      {
+        "id": "e9c96a7f92bab18c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a212b931cbe61202",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "iOS开发之旅.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "e2efaa15f0f402b3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "iOS开发之旅.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "03fc27312202d81c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "9d0c3c7972bb7623",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "iOS开发之旅.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "62951776efd1930d",
+  "lastOpenFiles": [
+    "OC学习.md",
+    "iOS开发之旅.md"
+  ]
+}
